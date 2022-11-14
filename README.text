@@ -82,9 +82,5 @@ if, elseのような処理を1行で記入できる
 ■&&の意味
 左側がtrueなら右側を返す
 
-■まとめ
-
-
-
 ーーーーーーーーーーーーーーー
-JavaScriptでTodoアプリを作成
+【JavaScriptでTodoアプリを作成】
