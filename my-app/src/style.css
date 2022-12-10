@@ -43,7 +43,7 @@ li {
 }
 
 /* 入力エリア */
-.input-area {
+/* .input-area {
   background: #c1ffff;
 
   width: 400px;
@@ -53,7 +53,7 @@ li {
   margin: 8px;
 
   border-radius: 8px;
-}
+} */
 
 /* 未完了エリア */
 .incomplete-area {

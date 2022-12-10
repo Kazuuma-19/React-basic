@@ -3,6 +3,8 @@ import React from "react";
 import { useState } from "react";
 import "./style.css";
 import { InputTodo } from "./components/InputTodo";
+import { IncompleteTodos } from "./components/IncompleteTodos";
+import { CompleteTodos } from "./components/CompleteTodos";
 
 export const App = () => {
   //const[value, fuction] = useState([初期値]);
@@ -65,39 +67,23 @@ export const App = () => {
         todoText={todoText}
         onChange={onChangeTodoText}
         onClick={onClickAdd}
+        //条件にあうときにtrue判定となる
+        disabled={incompleteTodos.length >= 5}
       />
 
-      <div className="incomplete-area">
-        <p className="title">未完了のTODO</p>
-        <ul id="incomplete-list">
-          {incompleteTodos.map((todo, index) => {
-            //2つの目の引数に順番をとる
-            return (
-              //key:ループ要素の一番親につける
-              <div key={todo} className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickComplete(index)}>完了</button>
-                <button onClick={() => onClickDelete(index)}>削除</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      {incompleteTodos.length >= 5 && (
+        <p style={{ color: "red", fontWeight: "bold" }}>
+          登録できるtodoは5個までだよ、消化しろ！！
+        </p>
+      )}
 
-      <div className="complete-area">
-        <p className="title">完了したTODO</p>
+      <IncompleteTodos
+        todos={incompleteTodos}
+        onClickComplete={onClickComplete}
+        onClickDelete={onClickDelete}
+      />
 
-        <ul id="complete-list">
-          {completeTodos.map((todo, index) => {
-            return (
-              <div className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickBack(index)}>戻す</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <CompleteTodos todos={completeTodos} onClickBack={onClickBack} />
     </>
   );
 };
